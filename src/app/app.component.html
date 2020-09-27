@@ -1,0 +1,118 @@
+<h3 class="ui block header">
+  {{title}}
+</h3>
+<div class="ui placeholder segment">
+  <form [formGroup]="registerform" (ngSubmit)="onSubmit()" class="ui form error">
+      <h4 class="ui dividing header">Project Location</h4>
+      <div class="ui two column grid">
+        <div class="row">
+          <div class="column">
+            <div class="ui three column grid">
+              <div class="column required">
+                <label>Project Name</label>
+              </div>
+              <div class="column">
+                <input type="text" placeholder="Project Name" formControlName="projectName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.projectName.errors }" />
+              </div>
+              <div class="column">
+                <div *ngIf="submitted && f.projectName.errors" class="ui left pointing red basic label">
+                  <div *ngIf="f.projectName.errors.required">Project Name required</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="ui dividing header">UI Tech Layers</h4>
+      <div class="ui two column grid">
+        <div class="row">
+          <div class="column">
+            <div class="ui two column grid">
+              <div class="column">
+                <label>UI technologies</label>
+              </div>
+              <div class="column">
+                <select class="ui selection dropdown form-control" multiple="" id="uitech" formControlName="uitech" class="form-control" >
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let tech of uilayers" [value]="tech.name">
+                    {{tech.name}}
+                  </option>
+                </select>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="ui dividing header">Middle Tech Layers</h4>
+      <div class="ui two column grid">
+        <div class="row">
+          <div class="column">
+            <div class="ui two column grid">
+              <div class="column">
+                <label>Middle technologies</label>
+              </div>
+              <div class="column">
+                <select class="ui selection dropdown form-control" multiple="" id="midtech" formControlName="midtech" class="form-control" >
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let tech of midlayers" [value]="tech.name">
+                    {{tech.name}}
+                  </option>
+                </select>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+      <h4 class="ui dividing header">Backend Tech Layers</h4>
+      <div class="ui two column grid">
+        <div class="row">
+          <div class="column">
+            <div class="ui two column grid">
+              <div class="column">
+                <label>Backend technologies</label>
+              </div>
+              <div class="column">
+                <select class="ui selection dropdown form-control" multiple="" id="backtech" formControlName="backtech" class="form-control" >
+                  <option value="" disabled>Select</option>
+                  <option *ngFor="let tech of backlayers" [value]="tech.name">
+                    {{tech.name}}
+                  </option>
+                </select>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <button [disabled]="loading" class="ui primary button">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Submit
+        </button>
+      </div>
+  </form>
+  <div class="ui modal">
+    <div class="header">Code Generated Successfully</div>
+    <div class="scrolling content">
+        The following files are generated based on your request
+        <ul>
+          <li>Dockerfile</li>
+          <li>Kubernetes deployment.yml</li>
+          <li>Gitlab CI Pipeline yml</li>
+        </ul>
+        <span>Extract the downloaded zip file and add it into your project location.</span>
+    </div>
+  </div>
+  <div *ngIf="isError" class="ui negative message">
+    <i class="close icon"></i>
+    <div class="header">
+      We're sorry we can't generate the code right now. Please try again later
+    </div>
+  </div>
+</div>
+<div *ngIf="loading" class="ui segment">
+  <div class="ui active dimmer">
+    <div class="ui text loader">Generating files</div>
+  </div>
+  <p></p>
+</div>
+<router-outlet></router-outlet>

@@ -21,7 +21,12 @@ Project is used as a UI project to interact with CodeGeneratorAI experience API 
 * Run "npm run start" to compile and execute the UI project
 * From browser, Open localhost:4200 to access code-assistant-ai dashboard
 * Developer should inputs like ProjectName, technologies in UI, Middle and backend layer. Finally, click on submit button to submit the request.
-* Code will be generated and downloaded as a zip file. Developer can extract and move the files into project root location eg: C:/dev/projectName
+* Code will be generated and downloaded as a zip file. Developer can extract and move the files into project root location eg: C:/dev/projectNameUI 
+
+## UI Snapshots
+![image](https://user-images.githubusercontent.com/52231685/94370546-57414f80-010e-11eb-9fc9-05b617b7f487.png)
+![image](https://user-images.githubusercontent.com/52231685/94370574-793ad200-010e-11eb-9f31-8a59841191de.png)
+
 
 ## Technologies
 * [Angular](https://angular.io/)
